@@ -1,0 +1,412 @@
+%% abtex2-modelo-relatorio-tecnico.tex, v-1.7.1 laurocesar
+%% Copyright 2012-2013 by abnTeX2 group at http://abntex2.googlecode.com/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://abntex2.googlecode.com/
+%%
+%% This work consists of the files abntex2-modelo-relatorio-tecnico.tex,
+%% abntex2-modelo-include-comandos and abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Relatório Técnico/Acadêmico em conformidade com 
+% ABNT NBR 10719:2011 Informação e documentação - Relatório técnico e/ou
+% científico - Apresentação
+% ------------------------------------------------------------------------ 
+% ------------------------------------------------------------------------
+
+% Alterado por Rodrigo Campiolo para apresentação de relatórios na disciplina
+% de Redes de Computadores II do Bacharelado em Ciência da Computação da UTFPR-CM.
+
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,   	        % para impressão em verso e anverso use twoside. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	]{pacotes/abntex2}
+
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{cmap}				% Mapear caracteres especiais no PDF
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+% ---
+\usepackage[utf8]{inputenc}
+
+\usepackage{float}
+% ---
+% Pacotes adicionais, usados no anexo do modelo de folha de identificação
+% ---
+\usepackage{multicol}
+\usepackage{multirow}
+% ---
+	
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{pacotes/abntex2cite}	% Citações padrão ABNT
+\usepackage{comment}
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% % ---
+% % Configurações do pacote backref
+% % Usado sem a opção hyperpageref de backref
+% \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% % Texto padrão antes do número das páginas
+% \renewcommand{\backref}{}
+% % Define os textos da citação
+% \renewcommand*{\backrefalt}[4]{
+% 	\ifcase #1 %
+% 		Nenhuma citação no texto.%
+% 	\or
+% 		Citado na página #2.%
+% 	\else
+% 		Citado #1 vezes nas páginas #2.%
+% 	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Resumo dos Capítulos 20 e 21 do Livro de Sistemas Operacionais 3º Edição}
+\autor{Igor Ortega Carmona | RA: 00236524 \\ Mateus Martins Cardoso de Sá | RA: 00228933 }
+\local{Cianorte}
+\data{Novembro / 2022}
+\instituicao{%
+  UNIPAR - CIANORTE
+  \par
+  Estudantes de Tecnologia em Análise e Desenvolvimento de Sistemas (ADS)
+}
+\tipotrabalho{Relatório técnico}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Resumo dos capítulos 20 e 21 do livro de Sistemas Operacionais 3º Edição, onde os tópicos a serem resumidos foram orientados pelo professor Dr. Roni da UNIPAR pela matéria de \textit{Sistemas Operacionais}, grade do curso de \textit{Análise e Desenvolvimento de Sistemas}. }
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{relatório técnico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% Omite a numeração de capítulos
+\renewcommand*\thesection{\arabic{section}}
+
+
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+%\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto
+% ---
+
+
+% ---
+% RESUMO
+% ---
+
+% resumo na língua vernácula (obrigatório)
+%\begin{resumo}
+ 
+ % Foram redigidos conceitos de recursividade explicando desde a sua teoria base até a implementação final sempre visando e relembrando dos cuidados a se tomar com a demonstração de exemplos na prática e detalhando o \textit{"mind-set"} dos passos realizados para melhor compreendimento.
+
+ % \vspace{\onelineskip}
+    
+ % \noindent
+ % \textbf{Palavras-chave}: Recursão. Árvore binária, linguagem C.
+%\end{resumo}
+% ---
+
+% ---
+% inserir lista de ilustrações
+% ---
+%\pdfbookmark[0]{\listfigurename}{lof}
+%\listoffigures*
+%\cleardoublepage
+% ---
+
+% ---
+% inserir lista de tabelas
+% ---
+%\pdfbookmark[0]{\listtablename}{lot}
+%\listoftables*
+%\cleardoublepage
+% ---
+
+% ---
+% inserir lista de abreviaturas e siglas
+% ---
+%\begin{siglas}
+%  \item[IP] Internet Protocol
+%  \item[TCP] Transmission Control Protocol
+%  \item[UDP] User Datagram Protocol
+%\end{siglas}
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+
+%------------------------------------------------------------------------%
+%% PARA FAZER CITAÇÕES
+  %  \cite{kernel/Linux}.
+%------------------------------------------------------------------------%
+
+
+%------------------------------------------------------------------------%
+%%LISTAGEM DE ITENS
+
+%\begin{itemize}
+%    \item \textbf{Virtual Box 6.1:} TEXTO
+%\end{itemize}
+%\begin{itemize}
+%    \item \textbf{Distribuição Linux GNU/Debian 11.4:} TEXTO
+%\end{itemize}
+%\begin{itemize}
+%    \item \textbf{kernel Linux 5.19.2:} TEXTO
+%\end{itemize}
+%------------------------------------------------------------------------%
+
+
+%-------------------------------------------------------------------------%
+  %% COLOCAR SITES
+  
+ % \url{https://www.debian.org/download}.
+%-------------------------------------------------------------------------%
+ 
+ 
+%-------------------------------------------------------------------------%    
+%%%% COLOCAR FIGURAS %%%%
+
+ %   \begin{figure}[H]
+  %\centering
+  %\includegraphics[scale=0.8]{figuras/vm.png}
+  %\caption{Configurações inicias da máquina}
+  %\label{fig:partições}
+%\end{figure}
+%------------------------------------------------------------------------%
+
+\textual
+
+\makeatletter
+\renewcommand{\chapter}{\@gobbletwo}
+\makeatother
+
+\section{\textbf{A Arquitetura do Núcleo do LINUX}}
+\label{sec:arq-linux}
+
+É um sistema monolítico e semelhante ao UNIX na qual possui seis subsistemas primários: gerenciamento de processo, comunicação interprocessos, gerenciamento de memória, gerenciamento de sistema de arquivo, gerenciamento de E/S e rede. \cite{nucleo-linux}
+
+São responsáveis pelo controle de acesso aos recursos do sistema e sua execução dos processos podem ser feitas em modo usuário ou kernel. Cada arquitetura precisa de um conjunto de instruções em baixo nível para as funções do Sistema Operacional e para que ele execute de forma adequada. 
+
+\section{\textbf{As Camadas de Software que compõe o Núcleo do Linux}}
+\label{sec:camadas-software}
+
+\begin{itemize}
+    \item \textbf{Interface de chamada de sistema:} 
+        \textit{Responsável por acionar os módulos do SO.}
+    \item \textbf{Gerenciador de processo:} 
+        \textit{Responsável pela criação de processos.}
+    \item \textbf{Gerenciador de memória:} 
+        \textit{Responsável por fornecer o acesso à memória aos processos.}
+    \item \textbf{Sistema de comunicação interprocessos (IPC):} 
+        \textit{Responsável pela comunicação dos processos um com os outros.}
+    \item \textbf{Sistema de arquivo virtual:} 
+        \textit{Responsável por fornecer aos processos uma interface para acessos aos arquivos e diretórios.}
+    \item \textbf{Sistema de arquivos físicos:}
+        \textit{O Linux faz o tratamento dos dispositivos como arquivos, são acessados igualmente aos arquivos de dados.}
+    \item \textbf{Interface de rede:} 
+        \textit{Responsável pela troca de dados com outros computadores da rede.}
+    \item \textbf{Interface de E/S:} 
+        \textit{Responsável por realizar alterações no sistema de entrada e saída.}
+\end{itemize}
+
+\section{\textbf{A Implementação Linux de Componentes de Sistema Operacional, como Processos}}
+\label{sec:componentes-linux}
+
+O subsistema \textbf{\textit{gerenciamento de processo}} é considerado essencial para uma multiprogramação eficiente no Linux, assim como, é responsável por alocar processadores a processos, entregar sinais, carregar módulos, receber as interrupções do sistema e por conter o escalonador de processo. \cite{processos-linux}
+
+No Linux, processos e threads são chamados de tarefas, internamente são uma única estrutura de dados na qual o gerenciador de processos guarda uma lista de todas as tarefas em duas estruturas de dados sendo a primeira uma lista circular, duplamente encadeada e a segunda é uma tabela hash. O núcleo tem sua composição escrita em linguagem de programação C. 
+
+O \textbf{escalonador de processo} Linux serve para que todas as tarefas possam ser executadas em um período de tempo razoável e também, de forma simultânea, respeitar as prioridades de tarefas, manter alta utilização, rendimento de recursos e reduzir a sobrecarga de operações de escalonamento. \cite{processos2-linux}
+
+\section{\textbf{A Arquitetura do Windows XP}}
+\label{sec:windows}
+
+A arquitetura do Windows XP é feita com um micronúcleo, geralmente uma arquitetura de micronúcleo modificada. O Windows XP é um sistema operacional com um núcleo compacto que prove serviços básicos para outros componentes do sistema operacional. Existe também a camada de abstração de hardware (Hardware Abstraction Layer – HAL) ele interage direto com o hardware, observando especialidades do hardware para o resto do sistema, o HAL tem múltiplas funções. 
+
+\section{\textbf{Os vários Subsistemas do Windows XP}}
+\label{sec:susbsistemas-windows}
+
+O ambiente são processos de modo usuário interpostos entre o executivo e o resto do espaço de usuário que exportam uma API para um ambiente de computação especifico. O subsistemas do ambiente \textit{win32} prove um ambiente típico de \textit{win32} bits
+
+\section{\textbf{Como o Windows XP executa o Gerenciamento de Processo, Thread}}
+\label{sec:windows-thread}
+
+O gerenciamento de processos mantém uma lista de todas as tarefas utilizando duas estruturas de dados. A primeira e uma lista circular, duplamente encadeada, na qual cada entrada contem ponteiros para as tarefas anteriores e posteriores da lista.
+
+\section{\textbf{Como o Windows XP executa a Comunicação Interprocessos}}
+\label{sec:windows-interprocessos}
+
+Ele executa com: pipe, filas de mensagens (denominadas mailslots pelo Windows XP) 296 e memória compartilhada, ele também se comunica por meio de técnicas orientadas para procedimento ou orientadas a objeto, usando chamadas remotas de procedimento ou microsofts componente object model (modelo de objeto componente da Microsoft).
+
+\newpage
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\renewcommand{\bibsection}{%
+\section{\bibname}
+\bibmark
+%\ifnobibintoc\else
+%\phantomsection
+%\addcontentsline{toc}{section}{\bibname}
+%\fi
+\prebibhook}
+
+\bibliography{abntex2-modelo-references}
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+% ---
+% Inicia os apêndices
+% ---
+% \begin{apendicesenv}
+
+% % ----------------------------------------------------------
+% \section*{Apêndice A - Nome do Apêndice}
+% \addcontentsline{toc}{section}{Apêndice A - Nome do Apêndice}
+% % ----------------------------------------------------------
+
+% \end{apendicesenv}
+% % ---
+
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+
+% % ---
+% % Inicia os anexos
+% % ---
+% \begin{anexosenv}
+
+% % ---
+% \section*{Anexo A - Nome do Anexo}
+% \addcontentsline{toc}{section}{Anexo A - Nome do Anexo}
+% % ---
+% \end{anexosenv}
+
+
+\end{document}

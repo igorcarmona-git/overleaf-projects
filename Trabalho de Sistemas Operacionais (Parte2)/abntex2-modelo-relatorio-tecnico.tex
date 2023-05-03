@@ -1,0 +1,422 @@
+%% abtex2-modelo-relatorio-tecnico.tex, v-1.7.1 laurocesar
+%% Copyright 2012-2013 by abnTeX2 group at http://abntex2.googlecode.com/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://abntex2.googlecode.com/
+%%
+%% This work consists of the files abntex2-modelo-relatorio-tecnico.tex,
+%% abntex2-modelo-include-comandos and abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Relatório Técnico/Acadêmico em conformidade com 
+% ABNT NBR 10719:2011 Informação e documentação - Relatório técnico e/ou
+% científico - Apresentação
+% ------------------------------------------------------------------------ 
+% ------------------------------------------------------------------------
+
+% Alterado por Rodrigo Campiolo para apresentação de relatórios na disciplina
+% de Redes de Computadores II do Bacharelado em Ciência da Computação da UTFPR-CM.
+
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,   	        % para impressão em verso e anverso use twoside. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	]{pacotes/abntex2}
+
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{cmap}				% Mapear caracteres especiais no PDF
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+% ---
+\usepackage[utf8]{inputenc}
+
+\usepackage{float}
+% ---
+% Pacotes adicionais, usados no anexo do modelo de folha de identificação
+% ---
+\usepackage{multicol}
+\usepackage{multirow}
+% ---
+	
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{pacotes/abntex2cite}	% Citações padrão ABNT
+\usepackage{comment}
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% % ---
+% % Configurações do pacote backref
+% % Usado sem a opção hyperpageref de backref
+% \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% % Texto padrão antes do número das páginas
+% \renewcommand{\backref}{}
+% % Define os textos da citação
+% \renewcommand*{\backrefalt}[4]{
+% 	\ifcase #1 %
+% 		Nenhuma citação no texto.%
+% 	\or
+% 		Citado na página #2.%
+% 	\else
+% 		Citado #1 vezes nas páginas #2.%
+% 	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Resumo dos Capítulos 20 e 21 do Livro de Sistemas Operacionais 3º Edição (Parte2)}
+\autor{Igor Ortega Carmona | RA: 00236524 \\ Jonathan Fernando Thomaz Melo | RA: 00229289}
+\local{Cianorte}
+\data{Novembro / 2022}
+\instituicao{%
+  UNIPAR - CIANORTE
+  \par
+  Estudantes de Tecnologia em Análise e Desenvolvimento de Sistemas (ADS)
+}
+\tipotrabalho{Relatório técnico}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Resumo dos capítulos 20 e 21 do livro de Sistemas Operacionais 3º Edição, onde os tópicos a serem resumidos foram orientados pelo professor Dr. Roni da UNIPAR pela matéria de \textit{Sistemas Operacionais}, grade do curso de \textit{Análise e Desenvolvimento de Sistemas}. }
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{relatório técnico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% Omite a numeração de capítulos
+\renewcommand*\thesection{\arabic{section}}
+
+
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+%\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto
+% ---
+
+
+% ---
+% RESUMO
+% ---
+
+% resumo na língua vernácula (obrigatório)
+%\begin{resumo}
+ 
+ % Foram redigidos conceitos de recursividade explicando desde a sua teoria base até a implementação final sempre visando e relembrando dos cuidados a se tomar com a demonstração de exemplos na prática e detalhando o \textit{"mind-set"} dos passos realizados para melhor compreendimento.
+
+ % \vspace{\onelineskip}
+    
+ % \noindent
+ % \textbf{Palavras-chave}: Recursão. Árvore binária, linguagem C.
+%\end{resumo}
+% ---
+
+% ---
+% inserir lista de ilustrações
+% ---
+%\pdfbookmark[0]{\listfigurename}{lof}
+%\listoffigures*
+%\cleardoublepage
+% ---
+
+% ---
+% inserir lista de tabelas
+% ---
+%\pdfbookmark[0]{\listtablename}{lot}
+%\listoftables*
+%\cleardoublepage
+% ---
+
+% ---
+% inserir lista de abreviaturas e siglas
+% ---
+%\begin{siglas}
+%  \item[IP] Internet Protocol
+%  \item[TCP] Transmission Control Protocol
+%  \item[UDP] User Datagram Protocol
+%\end{siglas}
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+
+%------------------------------------------------------------------------%
+%% PARA FAZER CITAÇÕES
+  %  \cite{kernel/Linux}.
+%------------------------------------------------------------------------%
+
+
+%------------------------------------------------------------------------%
+%%LISTAGEM DE ITENS
+
+%\begin{itemize}
+%    \item \textbf{Virtual Box 6.1:} TEXTO
+%\end{itemize}
+%\begin{itemize}
+%    \item \textbf{Distribuição Linux GNU/Debian 11.4:} TEXTO
+%\end{itemize}
+%\begin{itemize}
+%    \item \textbf{kernel Linux 5.19.2:} TEXTO
+%\end{itemize}
+%------------------------------------------------------------------------%
+
+
+%-------------------------------------------------------------------------%
+  %% COLOCAR SITES
+  
+ % \url{https://www.debian.org/download}.
+%-------------------------------------------------------------------------%
+ 
+ 
+%-------------------------------------------------------------------------%    
+%%%% COLOCAR FIGURAS %%%%
+
+ %   \begin{figure}[H]
+  %\centering
+  %\includegraphics[scale=0.8]{figuras/vm.png}
+  %\caption{Configurações inicias da máquina}
+  %\label{fig:partições}
+%\end{figure}
+%------------------------------------------------------------------------%
+
+\textual
+
+\makeatletter
+\renewcommand{\chapter}{\@gobbletwo}
+\makeatother
+
+\section{\textbf{Como o Linux gerencia memória}}
+\label{sec:arq-linux}
+
+\subsection{\textbf{Organização da memória}}
+\label{subsec:organizacao-memoria}
+
+O gerenciador de memória suporta endereços de 32bits e 64bits. A memória física é dividida em molduras de página de tamanhos fixos, podendo em cada arquitetura em individual ter tamanhos maiores (4 MB) ou menores (4 KB ou 8 KB), o responsável por armazenar informações sobre cada moldura de página é o núcleo,
+
+O sistema de gerenciamento de memória divide o espaço de endereçamento físico em três zonas na qual o tamanho de cada uma delas vai depender da arquitetura. Sendo eles:
+
+\begin{itemize}
+    \item \textbf{Primeira zona:} \textit{Memória DMA}.
+    \item \textbf{Segunda zona:} \textit{Memória normal}.
+    \item \textbf{Terceira zona:} \textit{Memória alta}.
+\end{itemize}
+
+Faltas de página podem reduzir o desempenho do núcleo.
+
+\subsection{\textbf{Organização da memória virtual}}
+\label{subsec:organizacao-memoria-virtual}
+
+O sistema de memória virtual suporta até três níveis de tabelas de páginas, serve para realizar a localização dos mapeamentos entre páginas virtuais e molduras de páginas. Sendo a sua hierarquia:
+
+\begin{itemize}
+    \item \textbf{Primeiro nível:} \textit{diretório global de páginas}.
+    \item \textbf{Segundo nível:} \textit{diretórios intermediários de páginas}.
+    \item \textbf{Terceiro nível:} \textit{tabelas de páginas}.
+\end{itemize}
+
+O uso de memória virtual tem como benefícios: um processo pode executar sem ter todas as instruções e dados dentro da memória principal. A memória virtual é criada de forma automática quando instalamos um S.O.
+
+\section{\textbf{Como o Linux gerencia arquivos}}
+\label{sec:arq-arquivos}
+
+Os arquivos servem como pontos de acesso a dados na qual eles podem ser encontrados em um disco local. O Linux suporta diversos sistemas de arquivos. O sistema de arquivos possui níveis de diretórios e são organizados em uma árvore na qual possui caminhos.
+
+\section{\textbf{Como o Windows XP gerencia a memória}}
+\label{sec:arq-memoria-windows}
+
+O gerenciador de memória virtual (VMM) do Windows cria a ilusão de que cada
+processo tem um espaço de memória próxima de 4 GB. O VMM armazena alguns
+dados em disco em arquivos denominados arquivos de páginas, já que o sistema
+aloca mais memória virtual a processos do que a memória principal pode comportar.
+Windows XP divide memória virtual em molduras de páginas na memória principal ou
+em arquivos em disco. Tendo um tamanho fixo e um sistema hierárquico de
+endereçamento de dois níveis. Como estratégia, o VMM usa páginas de
+cópia-na-escrita e emprega alocação tardia, adiando até que seja absolutamente
+necessário. Portanto, quando o VMM é forçado a executar E/S de disco, ele procura
+páginas no disco e coloca essas páginas na memória principal antes que seja
+necessário. A heurística assegura que o ganho na taxa de E/S de disco compensa o
+custo de lotar a memória principal com páginas potencialmente não utilizadas.
+Quando a RAM fica cheia, o Windows realiza uma versão do algoritmo de
+substituição de página menos usada.
+
+
+\section{\textbf{Como o Windows XP gerencia os arquivos}}
+\label{sec:arq-arquivos-windows}
+
+Os sistemas de arquivos do Windows XP, neste caso, o NTFS, consiste em três
+camadas de drivers. Na camada mais inferior contém vários drivers de volume que
+controlam um dispositivo de hardware específico, como o disco rígido. Drivers de
+sistema de arquivo, que compõem o próximo nível, implementam um formato
+particular de sistema de arquivos, esses drivers implantam o que um usuário típico
+vê como um sistema de arquivo: uma organização hierárquica de arquivos e as
+funções relacionadas que os manipulam. Por fim, drivers de filtros de sistemas de
+arquivos executam tarefas de alto nível, como proteção contra vírus, compressão e
+criptografia.
+
+\newpage
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\renewcommand{\bibsection}{%
+\section{\bibname}
+\bibmark
+%\ifnobibintoc\else
+%\phantomsection
+%\addcontentsline{toc}{section}{\bibname}
+%\fi
+\prebibhook}
+
+\bibliography{abntex2-modelo-references}
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+% ---
+% Inicia os apêndices
+% ---
+% \begin{apendicesenv}
+
+% % ----------------------------------------------------------
+% \section*{Apêndice A - Nome do Apêndice}
+% \addcontentsline{toc}{section}{Apêndice A - Nome do Apêndice}
+% % ----------------------------------------------------------
+
+% \end{apendicesenv}
+% % ---
+
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+
+% % ---
+% % Inicia os anexos
+% % ---
+% \begin{anexosenv}
+
+% % ---
+% \section*{Anexo A - Nome do Anexo}
+% \addcontentsline{toc}{section}{Anexo A - Nome do Anexo}
+% % ---
+% \end{anexosenv}
+
+
+\end{document}
