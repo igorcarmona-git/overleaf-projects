@@ -1,5 +1,7 @@
 Trabalhos acadêmicos realizados usando Overleaf para a formatação de texto de acordo com as regras da ABNT.
 
+----------------------------------------------------------------------------------------------------------------------------------
+
 LaTeX é um sistema de preparação de documentos amplamente utilizado para a produção de documentos técnicos e científicos de alta qualidade. Ele é especialmente popular na produção de documentos acadêmicos, como artigos, teses, relatórios técnicos e livros.
 
 Ao contrário de processadores de texto convencionais, como Microsoft Word, LaTeX utiliza um formato de marcação, o que significa que você insere comandos no texto para especificar a estrutura e o formato do documento. O LaTeX cuida automaticamente do layout, formatação de texto, numeração de seções, referências cruzadas, bibliografia, entre outros, proporcionando uma consistência e qualidade tipográfica notáveis.
